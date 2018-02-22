@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  expiration_date: 2018-01-18
+  in_use: false
+  beer: one
+
+two:
+  expiration_date: 2018-01-18
+  in_use: false
+  beer: two

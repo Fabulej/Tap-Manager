@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  plato: 1.5
+  ibu: 1
+  abv: 1.5
+  price: 1.5
+  brewery: one
+  style: one
+
+two:
+  name: MyString
+  plato: 1.5
+  ibu: 1
+  abv: 1.5
+  price: 1.5
+  brewery: two
+  style: two

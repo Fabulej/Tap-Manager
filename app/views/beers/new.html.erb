@@ -1,0 +1,42 @@
+<%= form_for @beer do |f| %>
+
+  <% if @beer.errors.any? %>
+    <div class='alert alert-danger' role='alert'>
+      <h2><%= pluralize(beer.errors.count, "error") %> prohibited this beer from being saved:</h2>
+
+      <ul>
+      <% beer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :plato %>
+  <%= f.number_field :plato %>
+
+  <%= f.label :ibu %>
+  <%= f.number_field :ibu %>
+
+  <%= f.label :abv %>
+  <%= f.number_field :abv, step: :any %>
+
+  <%= f.label :price %>
+  <%= f.number_field :price %>
+
+  <%= f.label :brewery %>
+    <% @breweries = Brewery.all %>
+    <%= f.select :brewery_id,
+        @breweries.map { |b| [b.name, b.id  ] }, {} %>
+
+  <%= f.label :style %>
+    <% @styles = Style.all %>
+    <%= f.select :style_id,
+        @styles.map { |s| [s.name, s.id  ] }, {} %>
+
+  <%= f.submit :Submit %>
+
+<% end %>
