@@ -1,7 +1,10 @@
-
-  <ul class="nav navbar-nav navbar-right">
-    <% if user_signed_in? %>
-      <li><%= current_user.email %></li>
-      <li><%= link_to 'Log out', destroy_user_session_path, method: :delete, role: 'button' %></li>
-    <% end %>
-  </ul>
+<nav id="navi" class="navbar navbar-default navbar-fixed-top main-navbar">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav navbar-right">
+      <% if user_signed_in? %>
+        <li><%= link_to current_user.email, beers_path %></li>
+        <li><%= link_to 'Log out', destroy_user_session_path, method: :delete, role: 'button' %></li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

@@ -1,5 +1,6 @@
 class Keg < ApplicationRecord
   belongs_to :beer
+  belongs_to :tap
 
 #zwraca po jednej beczce z każdego rodzaju o najkrótszej dacie ważności
   def self.avaiable_beers

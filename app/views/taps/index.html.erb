@@ -1,0 +1,40 @@
+<h1>List of taps</h1>
+
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Beer</th>
+      <th scope="col">Brewery</th>
+      <th scope="col">Style</th>
+      <th scope="col">Abv</th>
+      <th scope="col">Blg</th>
+      <th scope="col">IBU</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @taps.each do |tap| %>
+    <% if tap.keg %>
+      <% b = tap.keg.beer  %>
+      <tr>
+        <td><%= tap.number %></th>
+        <td><%= b.name %></td>
+        <td><%= b.brewery.name %></td>
+        <td><%= b.style.name %></td>
+        <td><%= b.abv %>%</td>
+        <td><%= b.plato %>°</td>
+        <td><%= b.ibu %></td>
+        <td><%= b.price %></td>
+      </tr>
+    <% else %>
+    <tr>
+      <td><%= tap.number %></td>
+      <%= 7.times do %>
+        <td></td>
+      <% end %>
+    </tr>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>
