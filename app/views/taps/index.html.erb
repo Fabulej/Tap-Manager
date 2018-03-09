@@ -1,3 +1,7 @@
+<% if params[:message].present? %>
+  <p>SIema</p>
+<% end %>
+
 <h1>List of taps</h1>
 
 <table class="table table-striped">
@@ -26,6 +30,7 @@
         <td><%= b.plato %>°</td>
         <td><%= b.ibu %></td>
         <td><%= b.price %></td>
+        <td><%= link_to 'Tap new beer', edit_tap_path(tap) %></td>
       </tr>
     <% else %>
     <tr>

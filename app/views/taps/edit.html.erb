@@ -1,0 +1,9 @@
+<%= form_for @tap do |f| %>
+  <% Keg.avaiable_beers.each do |k| %>
+    <% if k %>
+      <%= k.beer.name%>
+      <%= k.expiration_date %>
+      <%= f.submit 'Choose this beer', name: "keg_id", value: k.id%>
+    <% end %>
+  <% end %>
+<% end %>
