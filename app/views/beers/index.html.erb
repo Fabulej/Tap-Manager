@@ -1,3 +1,29 @@
-<% @beers.each do |beer| %>
-  <%= beer.name %>
-<% end %>
+<h1>List of beers</h1>
+
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Beer</th>
+      <th scope="col">Brewery</th>
+      <th scope="col">Style</th>
+      <th scope="col">Abv</th>
+      <th scope="col">Blg</th>
+      <th scope="col">IBU</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @beers.each_with_index do |b, i| %>
+    <tr>
+      <td><%= i+1 %></th>
+      <td><%= b.name %></td>
+      <td><%= b.brewery.name %></td>
+      <td><%= b.style.name %></td>
+      <td><%= b.abv %>%</td>
+      <td><%= b.plato %>°</td>
+      <td><%= b.ibu %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table
+<p><%= link_to 'Add new beer', new_beer_path %></p>

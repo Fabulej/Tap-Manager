@@ -1,6 +1,5 @@
 class BeersController < ApplicationController
-  before_action :authenticate_user!
-  
+
   def new
     @beer = Beer.new
   end

@@ -2,6 +2,8 @@
   <div class="container-fluid">
     <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>
+        <li><%= link_to 'Taps', taps_path %></li>
+        <li><%= link_to 'Beers list', beers_path %></li>
         <li><%= link_to current_user.email, beers_path %></li>
         <li><%= link_to 'Log out', destroy_user_session_path, method: :delete, role: 'button' %></li>
       <% end %>
