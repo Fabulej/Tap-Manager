@@ -1,3 +1,11 @@
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.expired{
+  color: red
+}
+
+.expired_soon{
+  color: orange
+}

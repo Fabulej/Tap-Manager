@@ -8,6 +8,14 @@ class Keg < ApplicationRecord
     self.tap ? self.in_use = true : self.in_use = false
   end
 
+  def expired?
+    if expiration_date < Date.today
+      "expired"
+    elsif expiration_date <= Date.today+1.week
+      "expired_soon"
+    end
+  end
+
 
 #zwraca po jednej beczce z każdego rodzaju o najkrótszej dacie ważności
   def self.avaiable_beers

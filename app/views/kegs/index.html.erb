@@ -1,0 +1,29 @@
+<h1>Kegs</h1>
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Expiration date</th>
+      <th scope="col">Tap number</th>
+    </tr>
+  </thead>
+<% @kegs.order(:expiration_date).each do |keg| %>
+  <tbody>
+    <tr>
+        <div class='keg'>
+            <td> <%= keg.id %> </td>
+            <td> <%= keg.beer.name %> </td>
+            <td class='<%= keg.expired? %>'> <%= keg.expiration_date %> </td>
+            <td>
+              <% if keg.tap %>
+                <%= keg.tap.number %>
+              <% else %>
+                <%= "not used"%>
+              <% end %>
+            </td>
+        </div>
+      <% end %>
+     </tr>
+  </tbody>
+</table>
