@@ -2,17 +2,19 @@
 <table class="table table-striped">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">ID</th>
+      <th scope="col">Amount</th>
       <th scope="col">Name</th>
       <th scope="col">Expiration date</th>
       <th scope="col">Tap number</th>
     </tr>
   </thead>
-<% @kegs.order(:expiration_date).each do |keg| %>
+<!-- Trzeba to uprościć, wyrzucić stąd w jakieś scopy. Jak nie będą się już powtarzały takie same piwa na kranach usunąć z group tap -->
+<% how_many = @kegs.pluck("count(*)")%>
+<% @kegs.each_with_index do |keg, i| %>
   <tbody>
     <tr>
         <div class='keg'>
-            <td> <%= keg.id %> </td>
+            <td> <%= how_many[i] %> x</td>
             <td> <%= keg.beer.name %> </td>
             <td class='<%= keg.expired? %>'> <%= keg.expiration_date %> </td>
             <td>
