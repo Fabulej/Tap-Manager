@@ -14,7 +14,7 @@
     </tr>
   </thead>
   <tbody>
-  <% @taps.each do |tap| %>
+  <% @taps.includes(keg: :beer).each do |tap| %>
     <% if tap.keg %>
       <% b = tap.keg.beer  %>
       <tr>
