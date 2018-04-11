@@ -1,0 +1,23 @@
+<h4>Continiue with <%= @tap.keg.beer.name %></h4>
+<%= form_for Priority.new do |f| %>
+  <div class="field">
+    <%= f.hidden_field :wanted, value: true %>
+  </div>
+
+  <div class="field">
+    <%= f.hidden_field :beer_id, value: @tap.keg.beer_id %>
+  </div>
+
+  <div class="field">
+    <%= f.hidden_field :p_type, value: :p_beer %>
+  </div>
+
+  <div class="field">
+    <%= f.hidden_field :tap_id, value: @tap.id %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

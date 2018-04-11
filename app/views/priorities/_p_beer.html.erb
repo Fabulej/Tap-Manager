@@ -1,7 +1,7 @@
 <%= form_for Priority.new do |f| %>
 
   <div class="field">
-    <%= f.check_box :wanted, id: :priority_wanted %>
+    <%= f.select :wanted, options_for_select([['Prioritize', true], ['Avoid', false]])%>
     <%= f.label "Check if You don't want selected beer" %>
   </div>
 
