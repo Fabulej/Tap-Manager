@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  wanted: false
+  beer: one
+  brewery: one
+  style: one
+  p_type: 1
+
+two:
+  wanted: false
+  beer: two
+  brewery: two
+  style: two
+  p_type: 1

@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Priorities</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Wanted</th>
+      <th>Beer</th>
+      <th>Brewery</th>
+      <th>Style</th>
+      <th>P type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @priorities.each do |priority| %>
+      <tr>
+        <td><%= priority.wanted %></td>
+        <td><%= priority.beer %></td>
+        <td><%= priority.brewery %></td>
+        <td><%= priority.style %></td>
+        <td><%= priority.p_type %></td>
+        <td><%= link_to 'Show', priority %></td>
+        <td><%= link_to 'Edit', edit_priority_path(priority) %></td>
+        <td><%= link_to 'Destroy', priority, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Beer Priority', new_priority_path(p_params: 1) %>
+<%= link_to 'New Brewery Priority', new_priority_path(p_params: 2) %>
+<%= link_to 'New Style Priority', new_priority_path(p_params: 3) %>

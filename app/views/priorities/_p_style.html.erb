@@ -1,0 +1,33 @@
+<%= form_with(model: priority, local: true) do |f| %>
+  <% if priority.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(priority.errors.count, "error") %> prohibited this priority from being saved:</h2>
+
+      <ul>
+      <% priority.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.check_box :wanted, id: :priority_wanted %>
+    <%= f.label "Check if You don't want beers from selected style" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Choose style" %>
+    <%= f.hidden_field :p_type, value: :p_beer %>
+  </div>
+
+  <%= f.label :style %>
+    <% @styles = Style.all %>
+    <%= f.select :style_id,
+        @styles.map { |b| [b.name, b.id  ] }, {} %>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
