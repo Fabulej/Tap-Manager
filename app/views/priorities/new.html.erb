@@ -1,8 +1,0 @@
-<h1>New Priority</h1>
-
-  <%= render 'p_beer', priority: @priority if params[:p_params] == "1"%>
-  <%= render 'p_brewery', priority: @priority if params[:p_params] == "2"%>
-  <%= render 'p_style', priority: @priority if params[:p_params] == "3"%>
-
-
-<%= link_to 'Back', priorities_path %>

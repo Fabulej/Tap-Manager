@@ -23,19 +23,17 @@ class PrioritiesController < ApplicationController
 
   # POST /priorities
   # POST /priorities.json
-  def create
-    @priority = Priority.new(priority_params)
 
-    respond_to do |format|
+    def create
+      @priority = Priority.new(priority_params)
       if @priority.save
-        format.html { redirect_to @priority, notice: 'Priority was successfully created.' }
-        format.json { render :show, status: :created, location: @priority }
+        flash[:notice] = "Priority created!"
+        redirect_to tap_path(@priority.tap_id)
       else
-        format.html { render :new }
-        format.json { render json: @priority.errors, status: :unprocessable_entity }
+        flash[:error] = "You can't leave empty priorities!"
+        redirect_to tap_path(@priority.tap_id)
       end
     end
-  end
 
   # PATCH/PUT /priorities/1
   # PATCH/PUT /priorities/1.json
@@ -69,6 +67,6 @@ class PrioritiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def priority_params
-      params.require(:priority).permit(:wanted, :beer_id, :brewery_id, :style_id, :p_type)
+      params.require(:priority).permit(:wanted, :beer_id, :brewery_id, :style_id, :p_type, :tap_id)
     end
 end

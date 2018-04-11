@@ -1,4 +1,9 @@
 class TapsController < ApplicationController
+
+  def show
+    @tap = Tap.find(params[:id])
+  end
+  
   def new
     @tap = Tap.new
   end

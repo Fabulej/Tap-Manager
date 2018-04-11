@@ -1,15 +1,4 @@
-<%= form_with(model: priority, local: true) do |f| %>
-  <% if priority.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(priority.errors.count, "error") %> prohibited this priority from being saved:</h2>
-
-      <ul>
-      <% priority.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for Priority.new do |f| %>
 
   <div class="field">
     <%= f.check_box :wanted, id: :priority_wanted %>
@@ -19,6 +8,10 @@
   <div class="field">
     <%= f.label "Choose beer" %>
     <%= f.hidden_field :p_type, value: :p_beer %>
+  </div>
+
+  <div class="field">
+    <%= f.hidden_field :tap_id, value: @tap.id %>
   </div>
 
   <%= f.label :beer %>

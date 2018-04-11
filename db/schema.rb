@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180411113548) do
+ActiveRecord::Schema.define(version: 20180411143532) do
 
   create_table "beers", force: :cascade do |t|
     t.string "name"
@@ -51,9 +51,11 @@ ActiveRecord::Schema.define(version: 20180411113548) do
     t.integer "p_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "tap_id"
     t.index ["beer_id"], name: "index_priorities_on_beer_id"
     t.index ["brewery_id"], name: "index_priorities_on_brewery_id"
     t.index ["style_id"], name: "index_priorities_on_style_id"
+    t.index ["tap_id"], name: "index_priorities_on_tap_id"
   end
 
   create_table "priority_types", force: :cascade do |t|
