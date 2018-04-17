@@ -31,6 +31,9 @@
     <% else %>
     <tr>
       <td><%= tap.number %></td>
+      <% 7.times do %>
+        <td> - </td>
+      <% end %>
       <td><%= link_to 'Tap new beer', edit_tap_path(tap) %></td>
     </tr>
     <% end %>
