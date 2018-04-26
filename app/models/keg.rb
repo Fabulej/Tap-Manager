@@ -4,6 +4,8 @@ class Keg < ApplicationRecord
 
   before_save :keg_tapped?
 
+  scope :avaiable_beers, -> {Keg.where(in_use: false).order('expiration_date desc').group('beer_id')}
+
   def keg_tapped?
     self.tap ? self.in_use = true : self.in_use = false
   end
@@ -18,11 +20,11 @@ class Keg < ApplicationRecord
 
 
 #zwraca po jednej beczce z każdego rodzaju o najkrótszej dacie ważności
-  def self.avaiable_beers
-    avaiable_beers = Keg.all.pluck(:beer_id).uniq.map! {|i| Keg.where(beer: i, in_use: false).order('expiration_date ASC').first}
+  # def self.avaiable_beers
+  #   avaiable_beers = Keg.all.pluck(:beer_id).uniq.map! {|i| Keg.where(beer: i, in_use: false).order('expiration_date ASC').first}
 #wyklucza piwa obecnie znajdujące się na kranach
     # avaiable_beers.compact.map! {|b| b unless Keg.where(in_use: true).pluck(:beer_id).include? b.beer.id}
-  end
+  # end
 
 
   # def self.beer_picker(priority_one=nil, priority_two=nil, priority_three=nil)

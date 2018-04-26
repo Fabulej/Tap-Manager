@@ -28,10 +28,10 @@ class PrioritiesController < ApplicationController
       @priority = Priority.new(priority_params)
       if @priority.save
         flash[:notice] = "Priority created!"
-        redirect_to tap_path(@priority.tap_id)
+        redirect_to edit_tap_path(@priority.tap_id)
       else
         flash[:error] = "You can't leave empty priorities!"
-        redirect_to tap_path(@priority.tap_id)
+        redirect_to edit_tap_path(@priority.tap_id)
       end
     end
 
