@@ -1,0 +1,29 @@
+<%= form_for Keg.new do |f| %>
+
+  <% if Keg.new.errors.any? %>
+    <div class='alert alert-danger' role='alert'>
+      <h2><%= pluralize(keg.errors.count, "error") %> prohibited this keg from being saved:</h2>
+
+      <ul>
+      <% keg.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= "How many kegs?" %>
+  <%= number_field_tag :number, 1, in: 1..100 %>
+
+  <%= f.label :expiration_date %>
+  <%= f.date_field :expiration_date %>
+
+
+  <%= f.label :brewery %>
+    <% @beers = Beer.all %>
+    <%= f.select :beer_id,
+        @beers.map { |b| [b.name, b.id  ] }, {} %>
+
+  <%= f.submit :Submit %>
+
+<% end %>
