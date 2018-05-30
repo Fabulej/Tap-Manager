@@ -18,8 +18,8 @@ class Priority < ApplicationRecord
 
   def prioritize
     wanted == true ? w = "Prioritize " : w = "Avoid "
-    return w + "beer: " + beer.name if p_type == "same_beer" || p_type ==  "p_beer"
-    return w + "brewery: " + brewery.name if p_type == "p_brewery"
-    return w + "style: " + style.name if p_type == "p_style"
+    return w + "beer: " + beer.name if same_beer? || p_beer?
+    return w + "brewery: " + brewery.name if p_brewery?
+    return w + "style: " + style.name if p_style?
   end
 end
