@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180530123050) do
+ActiveRecord::Schema.define(version: 20180530143343) do
 
   create_table "beers", force: :cascade do |t|
     t.string "name"
@@ -39,7 +39,9 @@ ActiveRecord::Schema.define(version: 20180530123050) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "tap_id"
+    t.integer "pub_id"
     t.index ["beer_id"], name: "index_kegs_on_beer_id"
+    t.index ["pub_id"], name: "index_kegs_on_pub_id"
     t.index ["tap_id"], name: "index_kegs_on_tap_id"
   end
 
@@ -63,6 +65,12 @@ ActiveRecord::Schema.define(version: 20180530123050) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "pubs", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "styles", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -74,6 +82,8 @@ ActiveRecord::Schema.define(version: 20180530123050) do
     t.integer "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "pub_id"
+    t.index ["pub_id"], name: "index_taps_on_pub_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -90,7 +100,9 @@ ActiveRecord::Schema.define(version: 20180530123050) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "role", default: 2
+    t.integer "pub_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["pub_id"], name: "index_users_on_pub_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

@@ -3,6 +3,7 @@ class Tap < ApplicationRecord
 
   has_one :keg
   has_many :priorities
+  belongs_to :pub
   accepts_nested_attributes_for :keg, update_only: true
   accepts_nested_attributes_for :priorities
 

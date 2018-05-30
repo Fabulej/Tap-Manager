@@ -1,6 +1,7 @@
 class Keg < ApplicationRecord
   belongs_to :beer
   belongs_to :tap, optional: true
+  belongs_to :pub
 
   before_save :keg_tapped?
 

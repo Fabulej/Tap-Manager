@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   enum role: {admin: 0, manager: 1, employee: 2}
+
+  belongs_to :pub
 end
