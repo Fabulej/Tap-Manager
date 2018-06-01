@@ -8,9 +8,11 @@ class KegsController < ApplicationController
   def create
      respond_to do |format|
        if Keg.new(kegs_params).valid?
+         new_kegs = []
          params[:number].to_i.times do
-           Keg.create(kegs_params)
+           new_kegs << Keg.new(kegs_params)
          end
+         new_kegs.each(&:save)
          format.html { redirect_to kegs_path, notice: 'Keg was successfully created.' }
          format.json { render :index, status: :created, location: @keg }
        else
@@ -23,6 +25,6 @@ class KegsController < ApplicationController
   private
 
   def kegs_params
-    params.require(:keg).permit(:expiration_date, :beer_id, :bibi)
+    params.require(:keg).permit(:expiration_date, :beer_id, :pub_id)
   end
 end

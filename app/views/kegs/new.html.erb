@@ -18,6 +18,7 @@
   <%= f.label :expiration_date %>
   <%= f.date_field :expiration_date %>
 
+  <%= f.hidden_field :pub_id, value: current_user.pub_id %>
 
   <%= f.label :brewery %>
     <% @beers = Beer.all %>

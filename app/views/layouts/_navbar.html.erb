@@ -1,7 +1,7 @@
 <nav id="navi" class="navbar navbar-default navbar-fixed-top main-navbar">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#"><%= current_user.pub.name %> </a>
+      <a class="navbar-brand" href="#"><%= current_user ? current_user.pub.name : 'Tap Manager' %> </a>
     </div>
     <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>

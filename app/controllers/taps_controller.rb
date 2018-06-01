@@ -3,7 +3,7 @@ class TapsController < ApplicationController
   def show
     @tap = Tap.find(params[:id])
   end
-  
+
   def new
     @tap = Tap.new
   end
@@ -33,7 +33,7 @@ class TapsController < ApplicationController
 
   def tap_params
     params.require(:tap).permit(
-    :number, keg_attributes: [ :id ]
+    :number, :pub_id, keg_attributes: [ :id ]
     )
   end
 end
