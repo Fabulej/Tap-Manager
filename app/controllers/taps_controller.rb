@@ -1,5 +1,5 @@
 class TapsController < ApplicationController
-
+load_and_authorize_resource
   def show
     @tap = Tap.find(params[:id])
   end

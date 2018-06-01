@@ -1,6 +1,6 @@
 
 class RegistrationsController < Devise::RegistrationsController
-
+load_and_authorize_resource
   def create
     @user = User.new(sign_up_params)
     if @user.save
@@ -23,10 +23,10 @@ class RegistrationsController < Devise::RegistrationsController
     else
       warden.authenticated?(resource_name)
     end
-    # unless current_user && current_user.admin?
-    #   flash[:alert] = I18n.t("devise.failure.already_authenticated")
-    #   redirect_to root_path
-    # end
+    unless current_user && current_user.admin?
+      flash[:alert] = I18n.t("devise.failure.already_authenticated")
+      redirect_to root_path
+    end
 
   end
 

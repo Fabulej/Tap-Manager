@@ -1,4 +1,5 @@
 class KegsController < ApplicationController
+load_and_authorize_resource except: :create
   def index
     @kegs = Keg.select("kegs.*, beers.name, taps.number").includes(:beer, :tap).order('beers.name, expiration_date').group(:name, :expiration_date, :in_use, :number)
     # Zapytanie grupuje duplikaty beczek
