@@ -6,5 +6,5 @@ class User < ApplicationRecord
 
   enum role: {admin: 0, manager: 1, employee: 2}
 
-  belongs_to :pub
+  belongs_to :pub, optional: true
 end

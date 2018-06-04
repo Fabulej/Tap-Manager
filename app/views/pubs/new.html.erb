@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h1>What is the name of your pub?</h1>
+    <%= form_for @pub do |f| %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.submit "Sign up", class: 'btn btn-sm btn-primary' %>
+
+    <% end %>
+  </div>
+</div>

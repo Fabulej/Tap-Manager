@@ -8,10 +8,10 @@ load_and_authorize_resource except: :create
 
   def create
      respond_to do |format|
-       if Keg.new(kegs_params).valid?
+       if Keg.new(keg_params).valid?
          new_kegs = []
          params[:number].to_i.times do
-           new_kegs << Keg.new(kegs_params)
+           new_kegs << Keg.new(keg_params)
          end
          new_kegs.each(&:save)
          format.html { redirect_to kegs_path, notice: 'Keg was successfully created.' }
@@ -25,7 +25,7 @@ load_and_authorize_resource except: :create
 
   private
 
-  def kegs_params
+  def keg_params
     params.require(:keg).permit(:expiration_date, :beer_id, :pub_id)
   end
 end

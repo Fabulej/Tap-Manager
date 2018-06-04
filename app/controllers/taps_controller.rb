@@ -1,16 +1,26 @@
 class TapsController < ApplicationController
 load_and_authorize_resource
+skip_before_action :pub_and_taps, only: [:new, :create]
   def show
     @tap = Tap.find(params[:id])
   end
 
-  def new
-    @tap = Tap.new
-  end
-
   def create
-    @tap = Tap.create(tap_params)
-  end
+     respond_to do |format|
+       if Tap.new(tap_params).valid?
+         new_taps = []
+         params[:number].to_i.times do
+           new_taps << Tap.new(tap_params)
+         end
+         new_taps.each(&:save)
+         format.html { redirect_to taps_path, notice: 'Tap was successfully created.' }
+         format.json { render :index, status: :created, location: @tap }
+       else
+         format.html { render :new }
+         format.json { render json: @tap.errors, status: :unprocessable_entity }
+       end
+     end
+   end
 
   def destroy
   end

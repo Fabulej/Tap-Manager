@@ -1,2 +1,8 @@
-<h1>Taps#new</h1>
-<p>Find me in app/views/taps/new.html.erb</p>
+<%= form_for @tap do |f| %>
+  <h3> How many taps does your pub have? </h3>
+  <%= number_field_tag :number, 1, in: 1..100 %>
+
+  <%= f.hidden_field :pub_id, value: current_user.pub_id %>
+
+  <%= f.submit :Submit %>
+<% end %>

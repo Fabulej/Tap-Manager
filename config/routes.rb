@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  root   'taps#index'
+  resources :pubs
   resources :priorities
-  root to: "taps#index"
   devise_for :users, :controllers => { registrations: 'registrations' }, :path_prefix => :my
   resources :kegs
   resources :beers

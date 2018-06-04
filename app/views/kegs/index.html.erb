@@ -11,7 +11,7 @@
   </thead>
 <!-- Trzeba to uprościć, wyrzucić stąd w jakieś scopy. Jak nie będą się już powtarzały takie same piwa na kranach usunąć z group tap -->
 <% how_many = @kegs.pluck("count(*)")%>
-<% @kegs.each_with_index do |keg, i| %>
+<% @kegs.where(pub: current_user.pub).each_with_index do |keg, i| %>
   <tbody>
     <tr>
         <div class='keg'>

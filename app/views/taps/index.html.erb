@@ -14,7 +14,7 @@
     </tr>
   </thead>
   <tbody>
-  <% @taps.includes(keg: :beer).each do |tap| %>
+  <% @taps.where(pub: current_user.pub).includes(keg: :beer).each do |tap| %>
     <% if tap.keg %>
       <% b = tap.keg.beer  %>
       <tr>

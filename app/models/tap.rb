@@ -1,5 +1,5 @@
 class Tap < ApplicationRecord
-  before_create :set_number
+  before_save :set_number
 
   has_one :keg
   has_many :priorities
@@ -8,7 +8,7 @@ class Tap < ApplicationRecord
   accepts_nested_attributes_for :priorities
 
   def set_number
-    self.number = Tap.all.count+1
+    self.number = self.pub.taps.count+1
   end
 
   def beer_picker
