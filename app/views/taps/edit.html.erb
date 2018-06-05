@@ -7,7 +7,7 @@
 <h3> Tap another beer</h3>
 <div>
   <%= form_for @tap do |f| %>
-    <% Keg.avaiable_beers.each do |k| %>
+    <% @tap.beer_picker.each do |k| %>
       <% if k %>
         <%= k.beer.name%>
         <%= k.expiration_date %>
