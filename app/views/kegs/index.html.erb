@@ -1,5 +1,5 @@
 <h1>Kegs</h1>
-<p><%= link_to 'Add new beer', new_beer_path %></p>
+<p><%= link_to 'Add new kegs', new_keg_path %></p>
 <table class="table table-striped">
   <thead class="thead-dark">
     <tr>
@@ -10,7 +10,7 @@
     </tr>
   </thead>
 <!-- Trzeba to uprościć, wyrzucić stąd w jakieś scopy. Jak nie będą się już powtarzały takie same piwa na kranach usunąć z group tap -->
-<% how_many = @kegs.pluck("count(*)")%>
+<% how_many = @kegs.where(pub: current_user.pub).pluck("count(*)")%>
 <% @kegs.where(pub: current_user.pub).each_with_index do |keg, i| %>
   <tbody>
     <tr>

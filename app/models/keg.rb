@@ -5,7 +5,7 @@ class Keg < ApplicationRecord
 
   before_save :keg_tapped?
 
-  scope :avaiable_beers, -> {Keg.where(in_use: false).order('expiration_date desc').group('beer_id').where.not(beer_id: Keg.on_tap)}
+  scope :avaiable_beers, -> {Keg.where(in_use: false).select('MIN(expiration_date), *').group('beer_id').where.not(beer_id: Keg.on_tap)}
   scope :on_tap, -> {Keg.where(in_use: true).pluck(:beer_id)}
 
   def keg_tapped?
