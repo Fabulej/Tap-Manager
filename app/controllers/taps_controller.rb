@@ -31,6 +31,7 @@ skip_before_action :pub_and_taps, only: [:new, :create]
 
   def update
     @tap = Tap.find(params[:id])
+    @tap.keg.destroy
     @tap.keg = Keg.find(params[:keg_id])
     redirect_to taps_path
   end
