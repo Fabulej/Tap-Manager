@@ -1,19 +1,22 @@
 <h3>Manage priorities</h3>
 <% @tap.priorities.each do |p| %>
-  <ul><%= p.prioritize %> </ul>
+  <ul><%= p.prioritize %>  <%= link_to "X", priority_path(p.id),
+    method: :delete, data: {confirm: "Do you want to cancel this priority?"},
+    class: 'btn btn-xs btn-danger' %>
+  </ul>
 <% end %>
-<% if can? :create, @priorities %>
+<% if can? :create, Priority %>
   <%= render "priorities/new" %>
 <% end %>
 <h3> Tap another beer</h3>
 <div>
   <%= form_for @tap do |f| %>
-    <% @tap.beer_picker.each do |k| %>
-      <% if k %>
-        <%= k.beer.name%>
-        <%= k.expiration_date %>
-        <%= f.submit 'Choose this beer', name: "keg_id", value: k.id%>
-      <% end %>
+      <% @tap.beer_picker.each do |k| %>
+        <% if k %>
+          <%= k.beer.name%>
+          <%= k.expiration_date %>
+          <%= f.submit 'Choose this beer', name: "keg_id", value: k.id%>
+        <% end %>
     <% end %>
   <% end %>
 </div>

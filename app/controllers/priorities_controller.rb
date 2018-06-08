@@ -53,9 +53,10 @@ class PrioritiesController < ApplicationController
   # DELETE /priorities/1
   # DELETE /priorities/1.json
   def destroy
+    @tap = @priority.tap
     @priority.destroy
     respond_to do |format|
-      format.html { redirect_to priorities_url, notice: 'Priority was successfully destroyed.' }
+      format.html { redirect_to edit_tap_path(@tap), notice: 'Priority was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
