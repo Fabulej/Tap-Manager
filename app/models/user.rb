@@ -6,5 +6,9 @@ class User < ApplicationRecord
 
   enum role: {admin: 0, manager: 1, employee: 2}
 
+  scope :admins, -> {User.where(role: 0)}
+  scope :managers, -> {User.where(role: 1)}
+  scope :employees, -> {User.where(role: 2)}
+
   belongs_to :pub, optional: true
 end

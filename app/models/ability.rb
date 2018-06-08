@@ -7,7 +7,7 @@ class Ability
       user ||= User.new # guest user (not logged in)
       if user.admin?
         can :create, Pub
-        can :create, User
+        can [:create, :index], User
         can :manage, Priority
         can :manage, Keg, pub_id: user.pub_id
         can :manage, Beer

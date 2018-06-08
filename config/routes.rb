@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :pubs
   resources :priorities
   devise_for :users, :controllers => { registrations: 'registrations' }, :path_prefix => :my
+  resources :users
   resources :kegs
   resources :beers
   resources :taps

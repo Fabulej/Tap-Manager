@@ -2,8 +2,9 @@
 <% @tap.priorities.each do |p| %>
   <ul><%= p.prioritize %> </ul>
 <% end %>
-<%= render "priorities/new" %>
-
+<% if can? :create, @priorities %>
+  <%= render "priorities/new" %>
+<% end %>
 <h3> Tap another beer</h3>
 <div>
   <%= form_for @tap do |f| %>

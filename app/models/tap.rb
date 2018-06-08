@@ -16,7 +16,8 @@ class Tap < ApplicationRecord
     results = priority_beers('wanted') - priority_beers('not_wanted')
     results
   end
-
+  
+ private
 
   def priority_beers wanted
       beers = priorities.send(wanted).p_beers.pluck(:beer_id)

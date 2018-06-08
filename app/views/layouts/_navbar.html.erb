@@ -8,6 +8,9 @@
         <li><%= link_to 'Taps', taps_path %></li>
         <li><%= link_to 'Beers', beers_path %></li>
         <li><%= link_to 'Kegs', kegs_path %></li>
+        <% if can? :index, User %>
+          <li><%= link_to 'Crew', users_path %></li>
+        <% end %>
         <li><%= link_to current_user.email, beers_path %></li>
         <li><%= link_to 'Log out', destroy_user_session_path, method: :delete, role: 'button' %></li>
       <% end %>

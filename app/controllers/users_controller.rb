@@ -4,10 +4,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit]
 
   def index
-    respond_to do |format|
-      format.html
-      format.csv { send_data @students.to_csv }
-    end
+    @users = current_user.pub.users
   end
 
   def show
