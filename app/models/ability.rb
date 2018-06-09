@@ -9,7 +9,7 @@ class Ability
         can :create, Pub
         can [:create, :index], User
         can :manage, Priority
-        can :manage, Keg, pub_id: user.pub_id
+        can [:index, :show, :create], Keg, pub_id: user.pub_id
         can :manage, Beer
         can :manage, Tap, pub_id: user.pub_id
       elsif user.manager?

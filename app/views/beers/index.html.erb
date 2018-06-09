@@ -1,5 +1,5 @@
 <h1>List of beers</h1>
-<% if can? :create, @beer %>
+<% if can? :create, Beer %>
   <p><%= link_to 'Add new beer', new_beer_path %></p>
 <% end %>
 <table class="table table-striped">

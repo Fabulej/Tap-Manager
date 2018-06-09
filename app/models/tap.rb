@@ -1,6 +1,5 @@
 class Tap < ApplicationRecord
   before_save :set_number
-  after_save :beer_continuation
 
   has_one :keg
   has_many :priorities
@@ -12,15 +11,9 @@ class Tap < ApplicationRecord
     self.number = self.pub.taps.count+1
   end
 
-  def beer_continuation
-    if self.priorities.where(p_type: "p_beer", beer: self.keg.beer)
-      self.priorities.where(p_type: "p_beer", beer: self.keg.beer).first.update(p_type = "same_beer")
-    end
-  end
-
   def beer_picker
     results = []
-    results << self.pub.kegs.where(beer_id: keg.beer_id).select('MIN(expiration_date), *').first if priorities.same_beer.any? && self.pub.kegs.where(in_use: false, beer_id: keg.beer_id).any?
+    results << self.pub.kegs.where(beer_id: keg.beer_id, in_use: false).select('MIN(expiration_date), *').first if priorities.same_beer.any? && self.pub.kegs.where(in_use: false, beer_id: keg.beer_id).any?
     return results unless results.empty?
     results = priority_beers('wanted') - priority_beers('not_wanted')
     results
