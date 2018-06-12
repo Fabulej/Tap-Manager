@@ -23,6 +23,15 @@ load_and_authorize_resource except: :create
      end
    end
 
+   def destroy
+     @tap = @keg.tap
+     @keg.destroy
+     respond_to do |format|
+       format.html { redirect_to edit_tap_path(@tap), notice: 'Keg was successfully destroyed.' }
+       format.json { head :no_content }
+     end
+   end
+
   private
 
   def keg_params

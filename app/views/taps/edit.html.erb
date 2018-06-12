@@ -1,22 +1,38 @@
-<h3>Manage priorities</h3>
-<% @tap.priorities.each do |p| %>
-  <ul><%= p.prioritize %>  <%= link_to "X", priority_path(p.id),
-    method: :delete, data: {confirm: "Do you want to cancel this priority?"},
-    class: 'btn btn-xs btn-danger' %>
-  </ul>
+<h2>Kran <%= @tap.number%>: <%= @tap.keg.beer.name %></h2>
+<% if @tap.priorities.any? %>
+  <h3>Priorities: </h3>
+  <% @tap.priorities.each do |p| %>
+    <ul><%= p.prioritize %><%= link_to "X", priority_path(p.id),
+      method: :delete, data: {confirm: "Do you want to cancel this priority?"},
+      class: 'btn btn-xs btn-danger' %>
+    </ul>
+  <% end %>
 <% end %>
 <% if can? :create, Priority %>
   <%= render "priorities/new" %>
 <% end %>
-<h3> Tap another beer</h3>
+<h3>Replace current keg with:</h3>
 <div>
   <%= form_for @tap do |f| %>
       <% @tap.beer_picker.each do |k| %>
         <% if k %>
           <%= k.beer.name%>
-          <%= k.expiration_date %>
-          <%= f.submit 'Choose this beer', name: "keg_id", value: k.id%>
+          <date class='<%= k.expired? %>'><%= k.expiration_date %></date>
+          <%= f.submit 'Choose this beer', name: "keg_id", value: k.id %>
         <% end %>
     <% end %>
   <% end %>
 </div>
+<% if @tap.keg %>
+  <h3><%=@tap.keg.beer.name %></h3>
+  <date class='<%= @tap.keg.expired? %>'><%= @tap.keg.expiration_date %></date>
+  <%= link_to "Untap current keg", keg_path(@tap.keg),
+    method: :delete, data: {confirm: "Do you want to untap this keg without tapping a new one?"},
+    class: 'btn btn-xs btn-danger' %>
+<% end %>
+<div>
+  <script>
+  $(document).ready(function(){
+      $('<div class="cover-button"><p>Choose this beer</p></div>').insertAfter( $('.edit_tap input[type="submit"]') );
+  });
+  </script>
