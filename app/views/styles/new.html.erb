@@ -1,0 +1,33 @@
+<div class="centered-wrapper">
+  <div class="sign-form col-xs-8 col-lg-4">
+    <h2>Add new style</h2>
+    <div class="content-wrapper">
+    <%= form_for @style do |f| %>
+
+      <% if @style.errors.any? %>
+        <div class='alert alert-danger' role='alert'>
+          <h2><%= pluralize(style.errors.count, "error") %> prohibited this style from being saved:</h2>
+
+          <ul>
+          <% style.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <div class="field form-field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+   </div>
+    <div class="field form-field">
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+   </div>
+    <div class="actions">
+      <%= f.submit "Confirm" %>
+    </div>
+
+    <% end %>
+    </div>
+  </div>
+</div>

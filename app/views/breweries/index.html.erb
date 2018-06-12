@@ -1,0 +1,22 @@
+<h1>List of beer breweries</h1>
+<% if can? :create, Brewery %>
+  <p><%= link_to 'Add new brewery', new_brewery_path %></p>
+<% end %>
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Beers of that brewery</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @breweries.each_with_index do |brewery, i| %>
+    <tr>
+      <td><%= i+1 %></th>
+      <td><%= brewery.name %></td>
+      <td><%= brewery.beers.length %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

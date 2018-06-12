@@ -1,0 +1,24 @@
+<h1>List of style styles</h1>
+<% if can? :create, Style %>
+  <p><%= link_to 'Add new style', new_style_path %></p>
+<% end %>
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Beers of that style</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @styles.each_with_index do |style, i| %>
+    <tr>
+      <td><%= i+1 %></th>
+      <td><%= style.name %></td>
+      <td><%= style.description %></td>
+      <td><%= style.beers.length %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

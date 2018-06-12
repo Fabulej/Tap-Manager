@@ -2,19 +2,22 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    alias_action :index, :read, :update, :destroy, to: :irud
     #
       user ||= User.new # guest user (not logged in)
       if user.admin?
         can :create, Pub
+        can :manage, Style
+        can :manage, Brewery
         can [:create, :index], User
         can :manage, Priority
-        can [:index, :show, :create], Keg, pub_id: user.pub_id
+        can [:index, :read, :create], Keg, pub_id: user.pub_id
         can :manage, Beer
         can :manage, Tap, pub_id: user.pub_id
       elsif user.manager?
         can :manage, Priority
-        can :manage, Keg, pub_id: user.pub_id
+        can :manage, Style
+        can :manage, Brewery
+        can [:index, :show, :create], Keg, pub_id: user.pub_id
         can :manage, Beer
         can [:index, :read, :update], Tap, pub_id: user.pub_id
       elsif user.employee?
