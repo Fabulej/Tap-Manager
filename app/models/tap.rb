@@ -16,7 +16,7 @@ class Tap < ApplicationRecord
     results << self.pub.kegs.where(beer_id: keg.beer_id, in_use: false).select('MIN(expiration_date), *').first if priorities.same_beer.any? && self.pub.kegs.where(in_use: false, beer_id: keg.beer_id).any?
     return results unless results.empty?
     results = priority_beers('wanted') - priority_beers('not_wanted')
-    results
+    results.first(3)
   end
 
  private
@@ -34,12 +34,10 @@ class Tap < ApplicationRecord
       styles = self.pub.kegs.avaiable_beers.includes(:beer).where(beers: {style_id: styles})
       styles ||= []
 
-    if wanted == 'wanted'
       compared ||= beers + breweries + styles
+    if wanted == 'wanted'
       compared.each_with_index.map{|x, i| x if compared[i+1] == x}.compact
       compared = self.pub.kegs.avaiable_beers.last(3) if compared.empty?
-    else
-      compared ||= beers + breweries + styles
     end
     compared.uniq
   end
