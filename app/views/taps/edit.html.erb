@@ -1,4 +1,4 @@
-<h2>Kran <%= @tap.number%>: <%= @tap.keg.beer.name %></h2>
+<h2>Kran <%= @tap.number%>: <%= @tap.keg.beer.name if @tap.keg%></h2>
 <% if @tap.priorities.any? %>
   <h3>Priorities: </h3>
   <% @tap.priorities.each do |p| %>
@@ -16,10 +16,12 @@
   <%= form_for @tap do |f| %>
       <% @tap.beer_picker.each do |k| %>
         <% if k %>
-          <%= k.beer.name%>
+        <div class="pick-beer">
+            <%= f.submit 'Choose this beer', name: "keg_id", value: k.id %>
+            <%= k.beer.name%>
           <date class='<%= k.expired? %>'><%= k.expiration_date %></date>
-          <%= f.submit 'Choose this beer', name: "keg_id", value: k.id %>
         <% end %>
+      </div>
     <% end %>
   <% end %>
 </div>
@@ -33,6 +35,6 @@
 <div>
   <script>
   $(document).ready(function(){
-      $('<div class="cover-button"><p>Choose this beer</p></div>').insertAfter( $('.edit_tap input[type="submit"]') );
+      $('<div class="btn cover-button"><p>Choose this beer</p></div>').insertAfter( $('.edit_tap input[type="submit"]') );
   });
   </script>

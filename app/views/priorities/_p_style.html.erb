@@ -1,12 +1,10 @@
 <%= form_for Priority.new do |f| %>
 
-  <div class="field">
-    <%= f.check_box :wanted, id: :priority_wanted %>
-    <%= f.label "Leave unselected to avoid this style" %>
-  </div>
+<div class="field form-field">
+  <%= f.select :wanted, options_for_select([['Prioritize', true], ['Avoid', false]])%>
+</div>
 
   <div class="field">
-    <%= f.label "Choose style" %>
     <%= f.hidden_field :p_type, value: :p_style %>
   </div>
 
@@ -14,7 +12,6 @@
     <%= f.hidden_field :tap_id, value: @tap.id %>
   </div>
 
-  <%= f.label :style %>
     <% @styles = Style.all %>
     <%= f.select :style_id,
         @styles.map { |s| [s.name, s.id  ] }, {} %>

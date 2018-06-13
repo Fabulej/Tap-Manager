@@ -9,7 +9,7 @@ class RegistrationsController < Devise::RegistrationsController
         redirect_to new_pub_path
       else
         flash[:success] = "New user succesfully created!"
-        redirect_to root_path
+        redirect_to users_path
       end
     else
         render :new

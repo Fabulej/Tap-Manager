@@ -1,8 +1,17 @@
-<%= form_for @tap do |f| %>
-  <h3> How many taps does your pub have? </h3>
-  <%= number_field_tag :number, 1, in: 1..100 %>
+<div class="centered-wrapper">
+  <div class="sign-form col-xs-8 col-lg-4">
+    <h2>Create new pub</h2>
+    <div class="content-wrapper">
+      <%= form_for @tap do |f| %>
+       <div class="field form-field">
+        <%= number_field_tag :number, 1, in: 1..100 %>
+      </div>
+        <%= f.hidden_field :pub_id, value: current_user.pub_id %>
 
-  <%= f.hidden_field :pub_id, value: current_user.pub_id %>
-
-  <%= f.submit :Submit %>
-<% end %>
+        <div class="actions">
+          <%= f.submit "Confirm" %>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>

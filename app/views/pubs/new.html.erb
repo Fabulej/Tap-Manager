@@ -1,13 +1,18 @@
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <h1>What is the name of your pub?</h1>
+<div class="centered-wrapper">
+  <div class="sign-form col-xs-8 col-lg-4">
+    <h2>Create new pub</h2>
+    <div class="content-wrapper">
     <%= form_for @pub do |f| %>
-
+       <div class="field form-field">
       <%= f.label :name %>
       <%= f.text_field :name, class: 'form-control' %>
+    </div>
 
-      <%= f.submit "Sign up", class: 'btn btn-sm btn-primary' %>
+    <div class="actions">
+      <%= f.submit "Confirm" %>
+    </div>
 
     <% end %>
+  </div>
   </div>
 </div>

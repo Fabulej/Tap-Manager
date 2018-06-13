@@ -14,7 +14,7 @@ $box-shadow: 0 8px 17px 2px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0
 
 
 body{
- 
+
 background: #673AB7;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #512DA8, #673AB7);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to right, #512DA8, #673AB7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -54,6 +54,7 @@ h1, h3{
   z-index: 10;
 }
 .cover-button{
+  margin-bottom: 5px;
   color: #fff;
   display: inline-block;
   text-align: center;
@@ -61,7 +62,8 @@ h1, h3{
   width:130px;
   height: 25px;
   transform: translateX(-100%);
-  background-color: violet;
+  box-shadow: $box-shadow;
+  background-color: $primary-color;
 }
 nav{
   background-color: $primary-color-dark !important;
@@ -196,7 +198,10 @@ table{
         padding: 3px 20px;
   }
 }
-
+.pick-beer{
+  color:white;
+  margin-bottom: 10px;
+}
  select{
       color: $primary-color-dark;
       margin: 0 auto;

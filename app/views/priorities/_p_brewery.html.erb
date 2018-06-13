@@ -1,12 +1,10 @@
 <%= form_for Priority.new do |f| %>
 
-  <div class="field">
-    <%= f.check_box :wanted, id: :priority_wanted %>
-    <%= f.label "Leave unselected to avoid this brewery" %>
-  </div>
+<div class="field form-field">
+  <%= f.select :wanted, options_for_select([['Prioritize', true], ['Avoid', false]])%>
+</div>
 
   <div class="field">
-    <%= f.label "Choose brewery" %>
     <%= f.hidden_field :p_type, value: :p_brewery %>
   </div>
 
@@ -14,7 +12,6 @@
     <%= f.hidden_field :tap_id, value: @tap.id %>
   </div>
 
-  <%= f.label :brewery %>
     <% @breweries = Brewery.all %>
     <%= f.select :brewery_id,
         @breweries.map { |b| [b.name, b.id  ] }, {} %>

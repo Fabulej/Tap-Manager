@@ -1,5 +1,22 @@
-<ul>
-<% @users.each do |u| %>
-  <li><%= u.role %>: <%= u.email %></li>
+<h1>List of user users</h1>
+<% if can? :create, User %>
+  <p><%= link_to 'Add new user', new_user_registration_path %></p>
 <% end %>
-</ul>
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Role</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @users.each_with_index do |user, i| %>
+    <tr>
+      <td><%= i+1 %></th>
+      <td><%= user.role %> <%= '(you)' if user == current_user %></td>
+      <td><%= user.email %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
