@@ -1,38 +1,39 @@
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
+<div class="centered-wrapper">
+  <div class="sign-form col-xs-8 col-lg-4">
     <% if current_user %>
       <h2>Add new user</h2>
     <% else %>
       <h3>Let's start from creating user account for you!</h2>
     <% end %>
+    <div class="content-wrapper">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
 
-      <div class="field">
+      <div class="field form-field">
         <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
 
       <% if current_user %>
         <%= f.label :role %>
-        <%= f.select :role, [['manager', :manager], ['employee', :employee]], {}, class: 'form-control' %>
+        <%= f.select :role, [['manager', :manager], ['employee', :employee]], {} %>
 
         <%= f.hidden_field :pub_id, value: current_user.pub_id %>
       <% else %>
         <%= f.hidden_field :role, value: 'admin' %>
       <% end %>
 
-      <div class="field">
+      <div class="field form-field">
         <%= f.label :password %>
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %><br />
-        <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+        <%= f.password_field :password, autocomplete: "off"%>
       </div>
 
-      <div class="field">
+      <div class="field form-field">
         <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+        <%= f.password_field :password_confirmation, autocomplete: "off"%>
       </div>
 
       <div class="actions">
@@ -43,3 +44,5 @@
     <%= render "devise/shared/links" %>
   </div>
 </div>
+</div>
+

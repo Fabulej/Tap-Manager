@@ -3,11 +3,19 @@
     <h2>Add new beer</h2>
     <div class="content-wrapper">
     <%= form_for @beer do |f| %>
+<<<<<<< HEAD
 
       <% if @beer.errors.any? %>
         <div class='alert alert-danger' role='alert'>
           <h2><%= pluralize(beer.errors.count, "error") %> prohibited this beer from being saved:</h2>
 
+=======
+    
+      <% if @beer.errors.any? %>
+        <div class='alert alert-danger' role='alert'>
+          <h2><%= pluralize(beer.errors.count, "error") %> prohibited this beer from being saved:</h2>
+    
+>>>>>>> Frontend
           <ul>
           <% beer.errors.full_messages.each do |message| %>
             <li><%= message %></li>
@@ -15,6 +23,7 @@
           </ul>
         </div>
       <% end %>
+<<<<<<< HEAD
     <div class="field form-field">
       <%= f.label :name %>
       <%= f.text_field :name %>
@@ -35,22 +44,57 @@
       <%= f.label :price %>
       <%= f.number_field :price %>
    </div>
+=======
+    <div class="field form-field">  
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+   </div>  
+    <div class="field form-field">
+      <%= f.label :plato %>
+      <%= f.number_field :plato %>
+   </div>  
+    <div class="field form-field">
+      <%= f.label :ibu %>
+      <%= f.number_field :ibu %>
+   </div>  
+    <div class="field form-field">
+      <%= f.label :abv %>
+      <%= f.number_field :abv, step: :any %>
+   </div>  
+    <div class="field form-field">
+      <%= f.label :price %>
+      <%= f.number_field :price %>
+   </div>  
+>>>>>>> Frontend
     <div class="field form-field">
       <%= f.label :brewery %>
         <% @breweries = Brewery.all %>
         <%= f.select :brewery_id,
             @breweries.map { |b| [b.name, b.id  ] }, {}, class: 'form-control' %>
+<<<<<<< HEAD
     </div>
     <div class="field form-select">
+=======
+    </div>  
+    <div class="field form-field">
+>>>>>>> Frontend
       <%= f.label :style %>
         <% @styles = Style.all %>
         <%= f.select :style_id,
             @styles.map { |s| [s.name, s.id  ] }, {}, class: 'form-control' %>
+<<<<<<< HEAD
     </div>
     <div class="actions">
       <%= f.submit "Confirm" %>
     </div>
 
+=======
+    </div>
+    <div class="actions">
+      <%= f.submit "Confirm" %>
+    </div>
+    
+>>>>>>> Frontend
     <% end %>
     </div>
   </div>

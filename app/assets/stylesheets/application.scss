@@ -2,13 +2,50 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+$primary-color-dark:   #512DA8;
+$primary-color:        #673AB7;
+$primary-color-light:  #D1C4E9;
+$primary-color-text:   #FFFFFF;
+$accent-color:         #FFC107;
+$primary-text-color:   #212121;
+$secondary-text-color: #757575;
+$divider-color:        #BDBDBD;
+$box-shadow: 0 8px 17px 2px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2);;
+
+
+body{
+ 
+background: #673AB7;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #512DA8, #673AB7);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #512DA8, #673AB7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+a{
+  color: #fff;
+  &:hover{
+    color: $accent-color;
+  }
+}
 .expired{
-  color: red
+  color: red;
 }
 
 .expired_soon{
-  color: orange
+  color: orange;
 }
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+h1, h3{
+  color: #fff;
+}
+.container{
+  height: 80vh;
+}
+<<<<<<< HEAD
 
 .edit_tap input[type="submit"]{
   opacity: 0;
@@ -27,3 +64,151 @@
   transform: translateX(-100%);
   background-color: violet;
 }
+=======
+nav{
+  background-color: $primary-color-dark !important;
+  box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.3);;
+  a{
+    color: #fff !important;
+    &:hover{
+      color: $accent-color !important;
+    }
+  }
+}
+.centered-wrapper{
+  height: 80vh;
+  position: relative;
+}
+.sign-form{
+  padding-left: 0;
+  padding-right: 0 ;
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: $box-shadow;
+  margin-bottom: 5%;
+  transition: 0.5s all linear;
+  // width: 300px;
+  // height: 350px;
+    h2, h3{
+      border-top: 10px solid $primary-color-dark;
+      margin: 0;
+    text-align: center;
+    color: #fff;
+    background-color: $primary-color;
+    padding: 25px 0;
+    letter-spacing: 1px;
+  }
+  .content-wrapper{
+    background-color: #fff;
+      padding: 20px;
+      .form-check {
+        line-height: 100%;
+        margin: 10px 0;
+        input,label{
+          margin: 0;
+        }
+        input{
+          vertical-align: bottom;
+        }
+      }
+    .form-field input, .form-field select{
+      color: $primary-color-dark;
+      margin: 0 auto;
+      width: 100%;
+      background-color: transparent;
+      border: none;
+      border-bottom: 2px solid $primary-color;
+      margin-bottom: 10px;
+    }
+    .actions input{
+      background-color: $primary-color;
+      box-shadow: none;
+      width: 100%;
+      text-align: center;
+      color: #fff;
+      border: none;
+      padding: 10px 0;
+      transition: 0.5s all ease;
+      margin: 15px 0;
+      letter-spacing: 1px;
+      &:hover{
+        background-color: $primary-color-dark;
+        transition: 0.5s all ease;
+        box-shadow: 0 8px 17px 2px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2);
+      }
+    }
+    a{
+    color: $primary-color;
+  }
+  }
+}
+#error_explanation{
+  h2{
+    background: none;
+    border: none;
+    color: $accent-color;
+  }
+  ul{
+    list-style: none;
+  }
+}
+.alert, .notice
+{
+  color: $accent-color;
+  text-align: center;
+  font-size: 16px
+}
+table{
+    box-shadow: $box-shadow;
+  thead{
+    background-color: $primary-color;
+    th{
+      color: #fff;
+    }
+  }
+  a{
+    color: $primary-color;
+    &:hover{
+      color: $accent-color;
+    }
+  }
+  & > tbody > tr:nth-of-type(odd){
+    background-color: $primary-color-light !important;
+  }
+    & > tbody > tr:nth-of-type(even){
+          background-color: #fff !important;
+    }
+}
+.panel{
+   box-shadow: $box-shadow;
+  .panel-heading{
+        background-color: $primary-color;
+  }
+  a{
+    color: #fff;
+  }
+  .actions input{
+    background: $primary-color-dark;
+    padding: 0 10px;
+    box-shadow: none;
+    border: none;
+    color: #fff;
+        padding: 3px 20px;
+  }
+}
+
+ select{
+      color: $primary-color-dark;
+      margin: 0 auto;
+      width: 100%;
+      background-color: transparent;
+      border: none;
+      border-bottom: 2px solid $primary-color;
+      margin-bottom: 10px;
+    }
+    ul{
+      color: #fff;
+    }
+>>>>>>> Frontend
