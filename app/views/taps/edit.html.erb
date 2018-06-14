@@ -4,7 +4,7 @@
   <% @tap.priorities.each do |p| %>
     <ul><%= p.prioritize %><%= link_to "X", priority_path(p.id),
       method: :delete, data: {confirm: "Do you want to cancel this priority?"},
-      class: 'btn btn-xs btn-danger' %>
+      class: 'btn btn-xs btn-danger' if can? :destroy, Priority %>
     </ul>
   <% end %>
 <% end %>
